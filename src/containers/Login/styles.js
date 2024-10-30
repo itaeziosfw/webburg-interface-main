@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+
 import BackgroundLogin from '../../assets/background-login.svg';
 import Background from '../../assets/background.png';
+ import {Link as LinkStyle} from 'react-router-dom';
 
 
 export const Conteiner = styled.div`
@@ -111,11 +113,9 @@ p {
 
 
 `;
-
-
-
-
-
-
+ export const Link = styled(LinkStyle)`
+ text-decoration: none;
+ color: #fff;
+ `;
 
 

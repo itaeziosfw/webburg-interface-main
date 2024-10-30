@@ -1,11 +1,13 @@
-import { useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
-import { toast } from "react-toastify"
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { toast } from "react-toastify";
 
-import Logo from '../../assets/log.svg'
+
+import Logo from '../../assets/log.svg';
 import  {Button} from '../../components/Button';
 import { api } from "../../services/api";
+
 
 import {
   Conteiner,
@@ -14,8 +16,25 @@ import {
   InputConteiner,
   RightContainer,
   Title,
+  Link,
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+  
+  
   
 } from './styles';
+
+
 
 
 
@@ -95,7 +114,7 @@ const onSubmit = async (data) => {
           </InputConteiner>
           <Button  type="submit" >Entrar</Button>
         </Form>
-        <p>Não possui conta?<a>Clique aqui.</a></p>
+        <p>Não possui conta?:;<Link> Clique aqui </Link> </p>
       </RightContainer>
     </Conteiner>
   );
