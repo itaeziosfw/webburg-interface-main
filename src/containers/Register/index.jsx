@@ -7,7 +7,6 @@ import Logo from '../../assets/log.svg';
 import { Button } from '../../components/Button';
 import { api } from '../../services/api';
 
-
 import {
   Conteiner,
   Form,
@@ -15,6 +14,7 @@ import {
   InputConteiner,
   RightContainer,
   Title,
+  Link,
 } from './styles';
 
 export function Register() {
@@ -44,31 +44,23 @@ export function Register() {
     resolver: yupResolver(schema),
   });
 
-  console.log(errors);
-
   const onSubmit = async (data) => {
     try {
-      const { status } = await api.post(
-        ('/user',
-        {
-          name: data.name,
-          email: data.email,
-          password: data.password,
-        },
-        {
-          validateStatus: () => true,
-        }),
-      );
+      const { status } = await api.post('/user', {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      });
 
       if (status === 200 || status === 201) {
         toast.success('Cadastro efetuado com sucesso !');
-      } else if (status === 409) {
+      } else if (status === 400) {
         toast.error('Email já cadastrado! Faça o Login para continuar');
       } else {
         throw new Error();
       }
+      // eslint-disable-next-line no-unused-vars
     } catch (error) {
-      console.error(error);
       toast.error('Falhar no sitema! Tente novamente');
     }
   };
@@ -85,30 +77,30 @@ export function Register() {
           <InputConteiner>
             <label>Nome</label>
             <input type="text" {...register('name')} />
-            <p>{errors.name?.message}</p>
+            <p>{errors?.name?.message}</p>
           </InputConteiner>
 
           <InputConteiner>
             <label>Email</label>
             <input type="email" {...register('email')} />
-            <p>{errors.email?.message}</p>
+            <p>{errors?.email?.message}</p>
           </InputConteiner>
           <InputConteiner>
             <label>Senha</label>
             <input type="password" {...register('password')} />
-            <p>{errors.password?.message}</p>
+            <p>{errors?.password?.message}</p>
           </InputConteiner>
 
           <InputConteiner>
             <label>Confirmar Senha </label>
             <input type="password" {...register('confirmPassword')} />
-            <p>{errors.confirmPassword?.message}</p>
+            <p>{errors?.confirmPassword?.message}</p>
           </InputConteiner>
 
           <Button type="submit">Criar Conta</Button>
         </Form>
         <p>
-          Já possui conta?<a>Clique aqui.</a>
+          Já possui conta?<Link to="/login">Clique aqui.</Link>
         </p>
       </RightContainer>
     </Conteiner>

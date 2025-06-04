@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+
+import { Link as LinkReact } from 'react-router-dom';
+
 import BackgroundLogin from '../../assets/background-login.svg';
 import Background from '../../assets/background.png';
 
@@ -105,10 +108,13 @@ p {
   height: 10px;
 }
 
-
 `;
 
 
+export const Link = styled(LinkReact)`
+text-decoration: none;
+color: #fff;
+`;
 
 
 

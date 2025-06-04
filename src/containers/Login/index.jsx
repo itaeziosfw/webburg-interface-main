@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 
 import Logo from '../../assets/log.svg';
@@ -16,22 +17,7 @@ import {
   InputConteiner,
   RightContainer,
   Title,
-  Link,
-  
-  
-  
-  
-  
-  
-
-  
-
-
-  
-  
-  
-  
-  
+  Link
 } from './styles';
 
 
@@ -39,6 +25,7 @@ import {
 
 
 export function Login() {
+  const navigate = useNavigate();
  
   const schema = yup
   .object({
@@ -61,10 +48,10 @@ export function Login() {
     resolver: yupResolver(schema),
   })
 
-  console.log(errors)
+  //console.log(errors)
 
 const onSubmit = async (data) => {
- const response =await toast.promise(
+ const {data:{token},} =await toast.promise(
   api.post('/session',{
     email: data.email,
     password: data.password,
@@ -72,17 +59,27 @@ const onSubmit = async (data) => {
 
   {
     pending: 'Verificando Seus dados',
-    success: 'Seja Bem-Vindo (a) 👌',
-    error: 'Email ou senha Incorretos 🤯'
+    success: {
+      render(){
+        setTimeout(()=>{
+        navigate('/') ;
+
+        },2000);
+        return 'Seja Bem-Vindo (a) 👌'
+      },
+    },
+    
+    error: 'Email ou senha Incorretos 🤯',
   },
    
 );
 
+
+
+localStorage.setItem('token',token);
+
   
-  
-  console.log(response)
-  
-  }
+  };
 
 
 
@@ -114,7 +111,7 @@ const onSubmit = async (data) => {
           </InputConteiner>
           <Button  type="submit" >Entrar</Button>
         </Form>
-        <p>Não possui conta?:;<Link> Clique aqui </Link> </p>
+        <p>Não possui conta?<Link to="/cadastro">Clique aqui.</Link> </p>
       </RightContainer>
     </Conteiner>
   );
