@@ -1,3 +1,5 @@
+
+
 import styled from "styled-components";
 
 
@@ -14,11 +16,11 @@ padding-left: 40px;
 export const Title =styled.h2`
 font-size: 32px;
 font-weight: 800;
-color: #9758a6;
+color: #61a120;
 padding-bottom: 12px;
 text-align: center;
 margin-bottom: 40px;
-margin-top: 20px;
+margin-top: 70px 0;
 position: relative;
 
 
@@ -27,7 +29,7 @@ content:'';
 width: 56px;
 height: 4px;
 position: absolute;
-background-color: #9758a6;
+background-color: #61a120;
 left: calc(50% - 28px);
 bottom: 0;
 }
@@ -37,7 +39,7 @@ bottom: 0;
 export const ConteinerItems =styled.div`
 
 
-background: url('{$(props) => props.imageUrl}');
+background: url('{$(props) => props,$imageurl}');
 
 background-position: center;
 background-size: cover;

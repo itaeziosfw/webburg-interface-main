@@ -1,26 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
-
-import { Login } from "../containers/Login";
 import { Home } from "../containers/home";
-import { Register } from "../containers/Register";
+import { Login } from "../containers/login";
+import { Register } from "../containers/register";
 
 export const router = createBrowserRouter([
-
-{
-    path:'/',
+  {
+    path: "/",
     element: <Home />,
-},
-
-{
-    path:'/login',
+  },
+  {
+    path: "/login",
     element: <Login />,
-},
-
-{
-    path:'/cadastro',
+  },
+  {
+    path: "/cadastro",
     element: <Register />,
-    
-
-},
-
-])
+  },
+]);
