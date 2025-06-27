@@ -36,34 +36,31 @@ bottom: 0;
 
 `;
 
-export const ConteinerItems =styled.div`
 
+export const ConteinerItems = styled.div`
+  background: ${(props) => `url(${props.$imageUrl})`};
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding:  20px 10px;
+  height:390px;
+  width:94%;
 
-background: url('{$(props) => props,$imageurl}');
-
-background-position: center;
-background-size: cover;
-border-radius: 20px;
-
-display: flex;
-align-items: center;
-padding: 20px 10px;
-width: 100%;
-height: 200px;
-
-
-
-p{
-    color: #fff;
-    background-color: rgba(0,0,0,0.5);
+  p {
+    color: #ffff;
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px 30px;
     border-radius: 30px;
-    font-size: 22.5px;
+    font-size: 35px;
     font-weight: bold;
     margin-top: 50px;
-}
 
+  }
 `;
+
+
 
 
 
